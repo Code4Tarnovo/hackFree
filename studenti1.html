@@ -1,0 +1,104 @@
+﻿
+<html>
+<head>
+<title> Регистрация</title>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+<td valign="top" width="45%" >
+ <form name="userRegisterForm" id="registerForm" action="studenti1.html">
+   <div id="ctl00_ContentPlaceHolder2_Panel1" style="text-align:center;" >
+    <br />
+    <div id="ctl00_ContentPlaceHolder2_Panel2">
+        <fieldset>
+            <legend>
+                <h3>Регистрация</h3>
+            </legend>
+            <center>
+              <img src="bt.jpg" width="180" height="180"  />   
+            </center>
+         <br>
+        E-mail :<input type="text" name="EmailAddress" size="45" maxlenght="40"/>
+        </br>
+        <br>
+        Вашето име :<input type="text" name="EmailAddress" size="45" maxlenght="40"/>
+        </br>
+        <br>
+        Вашата фамилия:<input type="text" name="EmailAddress" size="45" maxlenght="40"/>
+        </br>
+        <br>
+        Парола:<input type="text" name="EmailAddress" size="45" maxlenght="40"/>
+        </br>
+        <br>
+        Повтори парола :<input type="text" name="EmailAddress" size="45" maxlenght="40"/>
+        </br>
+        <div class="mtm 5wa2 5dbb" id="u_0_f">
+		<br>
+            <select id="userType" name="userType" >
+                <option name="2">Студент</option>
+                <option name="3">Професори</option>
+                <option name="4">Преподавател</option>
+                <option name="5">Ученик</option>
+				
+            </select>
+			</br>
+			
+       
+        <div>
+    <br/>
+    <button onClick="GetSelectedItem('userType');">Регистрация</button>
+</div>
+<script type="text/javascript">
+
+// A $( document ).ready() block.
+$( document ).ready(function() {
+    console.log( "ready!" );
+	
+	$( "#userType" ).change(function(e) {
+		var selectedIndex = $( "#userType option:selected" ).text();
+		
+		
+		
+		 if (selectedIndex == "Професори") {
+            $("#registerForm").attr("action","chu.html");
+        }
+        if (selectedIndex == "Професор") {
+		alert("Prof");
+           // form.action="chu.html";
+			 document.location.href = "chu.html";
+        }
+        if (selectedIndex== "Преподавател") {
+            $("#registerForm").attr("action","uch.html");
+        }
+        if (selectedIndex == "Ученик") {
+            form.action="ts.html";
+        }
+		
+    });
+});
+function GetSelectedItem(el)
+{
+    var e = document.getElementById(el);
+    //var strSel = "The Value is: " + e.options[e.selectedIndex].value + " and text is: " + e.options[e.selectedIndex].text;
+    var selectedIndex = e.options[e.selectedIndex].text;
+	alert();
+
+        if (selectedIndex== "Студент") {
+            window.location.href = "ts.html";
+        }
+        if (selectedIndex == "Професор") {
+		alert("Prof");
+           // form.action="chu.html";
+			 document.location.href = "chu.html";
+        }
+        if (selectedIndex== "Преподавател") {
+            form.action="uch.html";
+        }
+        if (selectedIndex == "Ученик") {
+            form.action="ts.html";
+        }
+		
+}
+</script>
+</body>
+</html>
