@@ -1,15 +1,104 @@
 ﻿<!DOCTYPE html>
 <html>
-<frameset rows="150px,*"border="0">     
-<frame noresize src="penka.html">     
-<frameset cols="50%,*,0%">         
-<frame src="pancho.html">         
-<frame src="studenti1.html">             
-</frameset> 
-</frameset> 
-<head>
-<title> The Repository </title>
-</head>
-
+    <head>
+        <meta charset="utf-8">
+        <title> The Repository </title>
+        <style>
+            input { text-align: center; margin-bottom: 10px; display: block; float: left; width: 400px;}
+            #LoginForm label { display: block; float: left; min-width: 120px;} 
+            #registerForm label { display: block; float: left; min-width: 200px;} 
+            #registerForm select, #registerForm button { display: block; margin: 0 auto; }
+            .clear {clear: both; }
+        </style>
+    </head>
+    <body>
+        <table border="0">
+            <tr>
+                <!--Картинка с хедър, заемащ и двете колони на таблицата (colspan=2)-->
+                <td colspan="2"><img src="images/title.jpg" width="1341" height="120" /></td>
+            </tr>
+            <tr>
+                <td width="45%">
+                    <form id="LoginForm" action="uch.html">
+                        <center>
+                          <label for="EmailAddressLogin">Вашия имейл:</label>
+                          <input type="text" name="EmailAddressLogin" size="45" maxlenght="40"/>
+                          <br class="clear" />
+                          <label for="LoginPassword">Вашия парола:</label>
+                          <input type="text" name="Password" id="LoginPassword" size="45" maxlenght="40"/>
+                          <br class="clear" />
+                        </center>
+                        <center>
+                            <button type="submit"> Влизане </button>
+                        </center>
+                        <center>
+                        <br>
+                        <img src="images/hi.gif" alt="Student" style="width:300px;height:350px;">
+                        </center>
+                    </form>
+                </td>
+                <td>
+                    <form name="userRegisterForm" id="registerForm" action="" method="post" onsubmit="event.preventDefault(); validateFields(this);">
+                        <fieldset>
+                            <legend>
+                                <h3>Регистрация</h3>
+                            </legend>
+                            <center><img src="images/bt.jpg" width="180" height="180"  /></center>
+                            <br>
+                            <label for="EmailAddress">E-mail :</label>
+                            <input type="text" name="EmailAddress" id="EmailAddress" size="45" maxlenght="40"/>
+                            <br class="clear" />
+                            <label for="Name">Вашето име :</label>
+                            <input type="text" name="Name" id="Name" size="45" maxlenght="40"/>
+                            <br class="clear" />
+                            <label for="Family">Вашата фамилия:</label>
+                            <input type="text" name="Family" id="Family" size="45" maxlenght="40"/>
+                            <br class="clear" />
+                            <label for="Password">Парола:</label>
+                            <input type="text" name="Password" id="Password" size="45" maxlenght="40"/>
+                            <br class="clear" />
+                            <label for="PasswordCheck">Повтори парола :</label>
+                            <input type="text" name="PasswordCheck" id="PasswordCheck" size="45" maxlenght="40"/>
+                            <br class="clear" />
+                            <select id="userType" name="userType" onchange="changeRegisterOption();">
+                                <option name="0">---Моля изберете--</option>
+                                <option name="2">Студент</option>
+                                <option name="3">Професор</option>
+                                <option name="4">Преподавател</option>
+                                <option name="5">Ученик</option>
+                            </select>
+                            <br>
+                            <button type="submit">Регистрация</button>
+                        </fieldset>
+                        <script type="text/javascript">
+                            changeRegisterOption = function() {
+                                var registerForm = document['userRegisterForm'];
+                                var selectedChoice = document.getElementById("userType").value;
+                                if (selectedChoice == "Студент") { registerForm.action = "studentRegister.html" }
+                                if (selectedChoice == "Професор") { registerForm.action = "proffesrorRegister.html" }
+                                if (selectedChoice == "Преподавател") { registerForm.action = "teacherRegister.html" }
+                                if (selectedChoice == "Ученик") { registerForm.action = "scholarRegister.html" }
+                            }
+                            validateFields = function(form) {
+                                var name = document.getElementById("Name").value;
+                                var family = document.getElementById("Family").value;
+                                var email = document.getElementById("EmailAddress").value;
+                                var password = document.getElementById("Password").value;
+                                var passwordCheck = document.getElementById("PasswordCheck").value;
+                                var userType = document.getElementById("userType").selectedIndex;
+                                if (name == '') { alert("Името е задължително поле"); document.getElementById("Name").focus(); return false; }
+                                if (family == '') { alert("Фамилията е задължително поле"); document.getElementById("Family").focus(); return false; }
+                                if (email == '') { alert("Мейлът е задължително поле"); document.getElementById("EmailAddress").focus(); return false; }
+                                if (password == '') { alert("Паролата е задължително поле"); document.getElementById("Password").focus(); return false; }
+                                if (password != passwordCheck) { alert("Несъвпадение на паролите"); document.getElementById("Password").focus(); return false; }
+                                if (userType == 0) { alert("Изберете тип потребител"); document.getElementById("userType").focus(); return false; }
+                                form.submit();
+                            }
+                        </script>
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </body>
 </html>
 
